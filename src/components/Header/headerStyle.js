@@ -1,6 +1,9 @@
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const headerStyle = theme => ({
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
   leftIcon: {
     marginRight: theme.spacing.unit,
   },
@@ -15,7 +18,7 @@ const headerStyle = theme => ({
     marginRight: theme.spacing.unit,
     '&:hover': {
       backgroundColor: fade(theme.palette.common.black, 0.25),
-    }
+    },
   },
   searchIcon: {
     width: theme.spacing.unit * 5,
@@ -33,6 +36,5 @@ const headerStyle = theme => ({
     color: 'inherit',
   },
 });
-  
+
 export default headerStyle;
-  
