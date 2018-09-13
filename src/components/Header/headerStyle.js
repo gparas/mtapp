@@ -4,8 +4,12 @@ const headerStyle = theme => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
   },
-  leftIcon: {
-    marginRight: theme.spacing.unit,
+  // leftIcon: {
+  //   marginRight: theme.spacing.unit,
+  // },
+  mainMenu: {
+    display: 'flex',
+    marginLeft: 'auto',
   },
   marginLeft: {
     marginLeft: 'auto',

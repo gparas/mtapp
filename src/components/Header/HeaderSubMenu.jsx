@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // @material-ui/core components
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Popper from '@material-ui/core/Popper';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import MenuItem from '@material-ui/core/MenuItem';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import MenuList from '@material-ui/core/MenuList';
+import MenuItem from '@material-ui/core/MenuItem';
+// @material-ui/icons
 import ExpandIcon from '@material-ui/icons/ExpandMore';
+// custom
+import headerStyle from './headerStyle';
 
-class DropdownLinks extends React.Component{
+class HeaderSubMenu extends React.Component {
   state = {
     open: false,
   };
@@ -27,38 +31,39 @@ class DropdownLinks extends React.Component{
     this.setState({ open: false });
   };
 
-  render(){
+  render() {
     const { open } = this.state;
-    const { label, menuItems, icon } = this.props;
-    const menuId = label.split(" ").join("-").toLowerCase();
-    return(
+    const { name, icon, menuItem } = this.props;
+    return (
       <div>
         <Button
           color="inherit"
           buttonRef={node => {
             this.anchorEl = node;
           }}
-          aria-owns={open ? menuId : null}
+          aria-owns={open ? name : null}
           aria-haspopup="true"
           onClick={this.handleToggle}
         >
           {icon}
-          {label}
-          <ExpandIcon/>
+          {name}
+          <ExpandIcon />
         </Button>
         <Popper open={open} anchorEl={this.anchorEl} transition disablePortal>
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
-              id={menuId}
+              id={name}
               style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
             >
               <Paper>
                 <ClickAwayListener onClickAway={this.handleClose}>
                   <MenuList>
-                    {menuItems.map((label, index) =>
-                      <MenuItem key={index} onClick={this.handleClose}>{label}</MenuItem>
-                    )}
+                    {menuItem.map(subMenu => (
+                      <MenuItem key={subMenu.id} onClick={this.handleClose}>
+                        {subMenu.name}
+                      </MenuItem>
+                    ))}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
@@ -68,12 +73,12 @@ class DropdownLinks extends React.Component{
       </div>
     );
   }
+}
+
+HeaderSubMenu.propTypes = {
+  name: PropTypes.string,
+  menuItem: PropTypes.shape.isRequired,
+  classes: PropTypes.shape.isRequired,
 };
 
-DropdownLinks.propTypes = {
-  label: PropTypes.string,
-  children: PropTypes.node,
-  menuItems: PropTypes.array,
-};
-
-export default DropdownLinks;
+export default withStyles(headerStyle)(HeaderSubMenu);

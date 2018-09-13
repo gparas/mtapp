@@ -6,7 +6,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Hidden from '@material-ui/core/Hidden';
@@ -15,8 +14,8 @@ import UserIcon from '@material-ui/icons/Person';
 import SearchIcon from '@material-ui/icons/Search';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 // custom
+import HeaderMenu from './HeaderMenu';
 import headerStyle from './headerStyle';
-import navbarRoutes from '../../routes/navbar';
 
 function Header({ classes }) {
   return (
@@ -26,14 +25,7 @@ function Header({ classes }) {
           MarineTraffic
         </Typography>
         <Hidden mdDown>
-          <div className={classes.marginLeft}>
-            {navbarRoutes.map(prop => (
-              <Button color="inherit" key={prop.id}>
-                <prop.icon className={classes.leftIcon} />
-                {prop.label}
-              </Button>
-            ))}
-          </div>
+          <HeaderMenu />
         </Hidden>
         <div className={classes.searchWrapper}>
           <div className={classes.searchIcon}>
@@ -55,7 +47,7 @@ function Header({ classes }) {
 }
 
 Header.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.shape.isRequired,
 };
 
 export default withStyles(headerStyle)(Header);
