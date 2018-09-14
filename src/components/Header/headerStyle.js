@@ -2,26 +2,26 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const headerStyle = theme => ({
   appBar: {
-    zIndex: theme.zIndex.drawer + 1,
+    zIndex: theme.zIndex.modal,
   },
-  // leftIcon: {
-  //   marginRight: theme.spacing.unit,
-  // },
   mainMenu: {
     display: 'flex',
     marginLeft: 'auto',
   },
-  marginLeft: {
+  rightMenu: {
+    display: 'flex',
     marginLeft: 'auto',
   },
   searchWrapper: {
     position: 'relative',
+    alignSelf: 'center',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.black, 0.15),
-    marginLeft: 'auto',
     marginRight: theme.spacing.unit,
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.black, 0.25),
+    [theme.breakpoints.up('sm')]: {
+      backgroundColor: fade(theme.palette.common.black, 0.15),
+      '&:hover': {
+        backgroundColor: fade(theme.palette.common.black, 0.25),
+      },
     },
   },
   searchIcon: {

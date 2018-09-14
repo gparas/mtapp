@@ -12,7 +12,7 @@ function FilterAction({ tooltipTitle, icon, onClick }) {
         button
         onClick={onClick}
       >
-        <ListItemIcon>
+        <ListItemIcon style={{ color: 'white' }}>
           {icon}
         </ListItemIcon>
       </ListItem>

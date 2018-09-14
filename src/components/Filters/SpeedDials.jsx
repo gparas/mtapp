@@ -5,12 +5,6 @@ import Button from '@material-ui/core/Button';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
-// @material-ui/icons
-import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
-import SaveIcon from '@material-ui/icons/Save';
-import PrintIcon from '@material-ui/icons/Print';
-import ShareIcon from '@material-ui/icons/Share';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 const styles = theme => ({
   root: {
@@ -22,14 +16,6 @@ const styles = theme => ({
     right: theme.spacing.unit * 3,
   },
 });
-
-const actions = [
-  { icon: <FileCopyIcon />, name: 'Copy' },
-  { icon: <SaveIcon />, name: 'Save' },
-  { icon: <PrintIcon />, name: 'Print' },
-  { icon: <ShareIcon />, name: 'Share' },
-  { icon: <DeleteIcon />, name: 'Delete' },
-];
 
 class SpeedDials extends React.Component {
   state = {
@@ -65,7 +51,7 @@ class SpeedDials extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, actions } = this.props;
     const { hidden, open } = this.state;
 
     let isTouch;
@@ -104,7 +90,8 @@ class SpeedDials extends React.Component {
 }
 
 SpeedDials.propTypes = {
-  classes: PropTypes.shape.isRequired,
+  classes: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(SpeedDials);

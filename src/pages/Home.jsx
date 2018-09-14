@@ -26,7 +26,7 @@ function Index({ classes }) {
 }
 
 Index.propTypes = {
-  classes: PropTypes.shape.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 export default withRoot(withStyles(style)(Index));

@@ -22,13 +22,14 @@ const theme = createMuiTheme({
       'Arial',
       'sans-serif',
     ].join(','),
+    fontWeightMedium: 600,
   },
+  // mixins: {
+  //   toolbar: {
+  //     minHeight: 56,
+  //   },
+  // },
   overrides: {
-    MuiToolbar: {
-      dense: {
-        minHeight: 56,
-      },
-    },
     MuiButton: {
       root: {
         fontWeight: 600,

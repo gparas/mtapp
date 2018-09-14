@@ -34,7 +34,7 @@ function HeaderMenu({ classes }) {
 }
 
 HeaderMenu.propTypes = {
-  classes: PropTypes.shape.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(headerStyle)(HeaderMenu);

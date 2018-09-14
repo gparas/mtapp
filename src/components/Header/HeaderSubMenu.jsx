@@ -10,7 +10,8 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
 // @material-ui/icons
-import ExpandIcon from '@material-ui/icons/ExpandMore';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 // custom
 import headerStyle from './headerStyle';
 
@@ -23,7 +24,7 @@ class HeaderSubMenu extends React.Component {
     this.setState(state => ({ open: !state.open }));
   };
 
-  handleClose = event => {
+  handleClose = (event) => {
     if (this.anchorEl.contains(event.target)) {
       return;
     }
@@ -38,7 +39,7 @@ class HeaderSubMenu extends React.Component {
       <div>
         <Button
           color="inherit"
-          buttonRef={node => {
+          buttonRef={(node) => {
             this.anchorEl = node;
           }}
           aria-owns={open ? name : null}
@@ -47,7 +48,7 @@ class HeaderSubMenu extends React.Component {
         >
           {icon}
           {name}
-          <ExpandIcon />
+          {open ? <ExpandLess /> : <ExpandMore />}
         </Button>
         <Popper open={open} anchorEl={this.anchorEl} transition disablePortal>
           {({ TransitionProps, placement }) => (
@@ -76,9 +77,9 @@ class HeaderSubMenu extends React.Component {
 }
 
 HeaderSubMenu.propTypes = {
-  name: PropTypes.string,
-  menuItem: PropTypes.shape.isRequired,
-  classes: PropTypes.shape.isRequired,
+  name: PropTypes.string.isRequired,
+  menuItem: PropTypes.array.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(headerStyle)(HeaderSubMenu);
