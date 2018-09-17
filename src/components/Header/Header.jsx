@@ -13,8 +13,10 @@ import Drawer from '@material-ui/core/Drawer';
 import UserIcon from '@material-ui/icons/Person';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
 // custom
 import HeaderSearch from './HeaderSearch';
+import HeaderSearchDrawer from './HeaderSearchDrawer';
 import HeaderMenu from './HeaderMenu';
 import HeaderMenuMobile from './HeaderMenuMobile';
 import headerStyle from './headerStyle';
@@ -22,6 +24,7 @@ import headerStyle from './headerStyle';
 class Header extends React.Component {
   state = {
     open: false,
+    openSearch: false,
   };
 
   handleDrawerOpen = () => {
@@ -30,13 +33,23 @@ class Header extends React.Component {
     });
   };
 
+  handleSearchDrawerOpen = () => {
+    this.setState({
+      openSearch: true,
+    });
+  };
+
   handleDrawerClose = () => {
     this.setState({ open: false });
   };
 
+  handleSearchDrawerClose = () => {
+    this.setState({ openSearch: false });
+  };
+
   render() {
     const { classes } = this.props;
-    const { open } = this.state;
+    const { open, openSearch } = this.state;
 
     return (
       <AppBar position="absolute" className={classes.appBar}>
@@ -48,14 +61,22 @@ class Header extends React.Component {
             <HeaderMenu />
           </Hidden>
           <div className={classes.rightMenu}>
-            <Hidden xsDown>
+            <Hidden xsUp>
               <HeaderSearch />
             </Hidden>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
+            <IconButton
+              color="inherit"
+              onClick={this.handleSearchDrawerOpen}
+            >
+              <SearchIcon />
             </IconButton>
+            <Hidden mdDown>
+              <IconButton color="inherit">
+                <Badge badgeContent={4} color="secondary">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+            </Hidden>
             <IconButton color="inherit">
               <UserIcon />
             </IconButton>
@@ -64,7 +85,9 @@ class Header extends React.Component {
                 color="inherit"
                 onClick={this.handleDrawerOpen}
               >
-                <MenuIcon />
+                <Badge badgeContent={4} color="secondary">
+                  <MenuIcon />
+                </Badge>
               </IconButton>
             </Hidden>
           </div>
@@ -75,6 +98,13 @@ class Header extends React.Component {
           onClose={this.handleDrawerClose}
         >
           <HeaderMenuMobile />
+        </Drawer>
+        <Drawer
+          open={openSearch}
+          anchor="top"
+          onClose={this.handleSearchDrawerClose}
+        >
+          <HeaderSearchDrawer onClose={this.handleSearchDrawerClose} />
         </Drawer>
       </AppBar>
     );

@@ -7,9 +7,9 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Hidden from '@material-ui/core/Hidden';
+// @material-ui/icons
+import NotificationsIcon from '@material-ui/icons/Notifications';
 // custom
-import HeaderSearch from './HeaderSearch';
 import HeaderSubMenuMobile from './HeaderSubMenuMobile';
 import appBarRoutes from '../../routes/appBar';
 
@@ -18,19 +18,24 @@ const style = theme => ({
     width: 320,
     backgroundColor: theme.palette.background.paper,
   },
+  textRight: {
+    textAlign: 'right',
+  },
 });
 
 function HeaderMenuMobile({ classes }) {
   return (
     <div className={classes.root}>
-      <Hidden smUp>
-        <List component="div" disablePadding>
-          <ListItem>
-            <HeaderSearch />
-          </ListItem>
-        </List>
-        <Divider />
-      </Hidden>
+      <List component="div">
+        <ListItem button>
+          <ListItemIcon>
+            <NotificationsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Notifications" />
+          <ListItemText secondary={4} className={classes.textRight} />
+        </ListItem>
+      </List>
+      <Divider />
       <List component="nav">
         {appBarRoutes.map((menuItem) => {
           if (menuItem.children !== undefined) {
@@ -46,7 +51,7 @@ function HeaderMenuMobile({ classes }) {
           return (
             <ListItem button key={menuItem.id}>
               <ListItemIcon>{menuItem.icon}</ListItemIcon>
-              <ListItemText inset primary={menuItem.name} />
+              <ListItemText primary={menuItem.name} />
             </ListItem>
           );
         })}

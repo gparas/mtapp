@@ -29,7 +29,7 @@ class HeaderSubMenuMobile extends React.Component {
           <ListItemIcon>
             {icon}
           </ListItemIcon>
-          <ListItemText inset primary={name} />
+          <ListItemText primary={name} />
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>

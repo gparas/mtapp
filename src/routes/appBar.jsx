@@ -12,13 +12,13 @@ const appBarRoutes = [
     id: 1,
     path: '/',
     name: 'Live Map',
-    icon: <MapIcon style={{ marginRight: 4 }} />,
+    icon: <MapIcon />,
   },
   {
     id: 2,
     path: '/',
     name: 'Vessels',
-    icon: <VesselsIcon style={{ marginRight: 4 }} />,
+    icon: <VesselsIcon />,
     children: [
       {
         id: 1,
@@ -46,7 +46,7 @@ const appBarRoutes = [
     id: 3,
     path: '/',
     name: 'Ports',
-    icon: <PortsIcon style={{ marginRight: 4 }} />,
+    icon: <PortsIcon />,
     children: [
       {
         id: 1,
@@ -79,13 +79,13 @@ const appBarRoutes = [
     id: 4,
     path: '/',
     name: 'Companies',
-    icon: <CompaniesIcon style={{ marginRight: 4 }} />,
+    icon: <CompaniesIcon />,
   },
   {
     id: 5,
     path: '/',
     name: 'Community',
-    icon: <CommunityIcon style={{ marginRight: 4 }} />,
+    icon: <CommunityIcon />,
     children: [
       {
         id: 1,
@@ -128,7 +128,7 @@ const appBarRoutes = [
     id: 6,
     path: '/',
     name: 'Solutions',
-    icon: <SolutionsIcon style={{ marginRight: 4 }} />,
+    icon: <SolutionsIcon />,
     children: [
       {
         id: 1,
