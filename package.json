@@ -1,8 +1,8 @@
 {
-  "name": "create-react-app",
+  "name": "mtapp_material",
   "version": "1.0.0",
   "private": true,
-  "homepage": "http://gparas.github.io/mtapp_material",
+  "homepage": "https://gparas.github.io/mtapp_material",
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "^3.0.1",
@@ -13,15 +13,6 @@
     "react-dom": "latest",
     "react-scripts": "latest"
   },
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint": "eslint src"
-  },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
     "eslint": "^4.19.1",
@@ -30,5 +21,14 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "gh-pages": "^2.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint src",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
